@@ -109,7 +109,7 @@ with st.container():
         st.pyplot(fig)
 
     with exp_column:
-        st.subheader('Chart representing all matches in 7 clusters')
+        st.subheader('Chart representing all matches in 8 clusters')
         st.write(
                          '''
                         - Here you can see 7 different colors which represent each clusters
