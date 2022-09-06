@@ -1,10 +1,17 @@
 # from optparse import Option
 # from ssl import Options
+from turtle import width
 import streamlit as st
 import requests
 from streamlit_lottie import st_lottie
 from streamlit_lottie import st_lottie_spinner
 from PIL import Image
+from LoL_Final_Project.data.retrieve_data import get_local_data
+from LoL_Final_Project.data.prepare_data import filter_major_leagues, aggregate_team_data, create_agg_dataframe
+from LoL_Final_Project.logic.preprocess import preprocess
+from LoL_Final_Project.logic.model import fit_model, visualize_model
+from LoL_Final_Project.logic.predict import predict_teams, visualize_predictions
+from LoL_Final_Project.main.main import get_data, preprocess_run, visualize, visualize2
 
 st.set_page_config(page_title='Our Data Science Project', page_icon='🍁', layout='wide')
 
@@ -96,7 +103,9 @@ with st.container():
     st.write('---')
     chart_column, exp_column = st.columns((2, 2))
     with chart_column:
-        st.image(cluster_chart, width= 600,  caption='Chart representing all teams in 7 clusters')
+        #st.image(cluster_chart, width= 600,  caption='Chart representing all teams in 7 clusters')
+        fig = visualize()
+        st.pyplot(fig)
 
     with exp_column:
         st.subheader('Chart representing all matches in 7 clusters')
@@ -111,23 +120,23 @@ with st.container():
         )
 
 
-with st.container():
-    st.write('---')
-    chart_column, exp_column = st.columns((2, 2))
-    with chart_column:
-        st.image(means_of_last_10, width= 600,  caption='Last 10 matches of all teams')
+#with st.container():
+    #st.write('---')
+    #chart_column, exp_column = st.columns((2, 2))
+    #with chart_column:
+    #    st.image(means_of_last_10, width= 600,  caption='Last 10 matches of all teams')
 
-    with exp_column:
-        st.subheader('Chart representing all matches in 7 clusters')
-        st.write(
-                        '''
-                        - Here you can see 7 different colors which represent each clusters
-                        - All LoL matches played during 2022 been clustered by our model based on their method of playing
-                        - Some teams try tend to go monsterkills more, some go for barons and canons and some go for structures
-                        - Keep in mind, we have also looked at sides because each side has different advantages
+    #with exp_column:
+    #    st.subheader('Chart representing all matches in 7 clusters')
+    #    st.write(
+    #                    '''
+                        #- Here you can see 7 different colors which represent each clusters
+                        #- All LoL matches played during 2022 been clustered by our model based on their method of playing
+                        #- Some teams try tend to go monsterkills more, some go for barons and canons and some go for structures
+                        #- Keep in mind, we have also looked at sides because each side has different advantages
 
-                         '''
-        )
+    #                    '''
+    #    )
 
 
 
@@ -163,5 +172,8 @@ st.title('Choose any of the following teams')
 team_1 = st.selectbox(label = 'Choose your team', options= teams1)
 team_2 = st.selectbox(label = 'Choose the opponent', options = teams2)
 
-if team_1 == 'Oh My God' and team_2 == 'Gen.G':
-    st.image(gen_g, width=600, caption= 'Oh My God vs Gen.G')
+if team_1 != '' and team_2 != '':
+    #st.image(gen_g, width=600, caption= 'Oh My God vs Gen.G')
+    fig2 = visualize2(team1 = team_1, team2 = team_2)
+    #fig, ax = plt.subplots(figsize=(12,12))
+    st.pyplot(fig2, figsize=(12,12))

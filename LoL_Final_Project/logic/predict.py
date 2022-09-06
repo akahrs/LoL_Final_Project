@@ -17,9 +17,12 @@ def predict_teams(model, X, df):
 
     return df_class
 
-def visualize_predictions(model, X, df):
+def visualize_predictions(model, X, df, team1, team2):
 
     # Visualize predicted clusters for two teams
+
+    df_reset = df.copy()
+    df_reset.reset_index(inplace=True)
 
     X_t = pd.DataFrame(X, columns=df.columns)
     X_t["clusters"] = model.labels_
@@ -27,8 +30,8 @@ def visualize_predictions(model, X, df):
     X_mean = pd.concat([pd.DataFrame(X_t.mean().drop('clusters'), columns=['mean']),
                    X_t.groupby('clusters').mean().T], axis=1)
 
-    sel_teams = df[df.index.isin(["G2 Esports", "Top Esports"])]
-    teams = [row["team"] for index, row in sel_teams.iterrows()]
+    sel_teams = df_reset[df_reset["index"].isin([team1, team2])]
+    teams = [row["index"] for index, row in sel_teams.iterrows()]
     index_pos = sel_teams.index.tolist()
 
     X_new_sel = pd.DataFrame(X).loc[[index_pos[0], index_pos[1]],:]
@@ -66,7 +69,7 @@ def visualize_predictions(model, X, df):
 
     fig = plt.figure(figsize=(12, 12))
     no_features = model.n_features_in_
-    radar = Radar(fig, list(model.columns), np.unique(model.labels_))
+    radar = Radar(fig, list(df.columns), np.unique(model.labels_))
     location = 0
 
     for k in model.predict(X_new_sel):

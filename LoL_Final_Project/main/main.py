@@ -15,7 +15,7 @@ def get_data():
 
     return df
 
-def preprocess_run_model(df = get_data()):
+def preprocess_run(df = get_data()):
 
     X = preprocess(df)
 
@@ -25,18 +25,24 @@ def preprocess_run_model(df = get_data()):
 
     return (X, model)
 
-def visualize_model():
+def visualize():
 
-    model = preprocess_run_model()[1]
+    model = preprocess_run()[1]
 
-    X = preprocess_run_model()[0]
+    X = preprocess_run()[0]
 
     df = get_data()
 
     return visualize_model(model, X, df)
 
-def visualize_predictions(model = preprocess_run_model()[1], X = preprocess_run_model()[0], df = get_data()):
+def visualize2(team1, team2):
 
     # df_classified = predict_teams(model, X, df)
 
-    return visualize_predictions(model, X, df)
+    model = preprocess_run()[1]
+
+    X = preprocess_run()[0]
+
+    df = get_data()
+
+    return visualize_predictions(model, X, df, team1=team1, team2=team2)

@@ -15,6 +15,8 @@ def aggregate_team_data(df_major, team, n_games):
 
     # Aggregate each teams' data for given number of games
 
+    df_major["big_monsters_taken"] = df_major["dragons"] + df_major["barons"]
+
     df_major_agg = df_major[df_major["teamname"] == team].tail(n_games).groupby("teamname").aggregate(
     {"gamelength": "mean",
         "result": "mean",
