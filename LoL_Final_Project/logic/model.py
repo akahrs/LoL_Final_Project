@@ -58,7 +58,7 @@ def visualize_model(model, X, df):
             kw['label'] = '_noLabel'
             self.ax.fill(angle, values,*args,**kw)
 
-    fig = plt.figure(figsize=(12, 12))
+    fig = plt.figure(figsize=(8, 8))
     no_features = model.n_features_in_
     radar = Radar(fig, list(df.columns), np.unique(model.labels_))
 

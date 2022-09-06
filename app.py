@@ -1,5 +1,6 @@
 # from optparse import Option
 # from ssl import Options
+import matplotlib.pyplot as plt
 from turtle import width
 import streamlit as st
 import requests
@@ -141,7 +142,7 @@ with st.container():
 
 
 
-teams1 = ['Oh My God','ThunderTalk Gaming','FunPlus Phoenix','Royal Never Give Up',
+teams1 = ['','Oh My God','ThunderTalk Gaming','FunPlus Phoenix','Royal Never Give Up',
          'JD Gaming', 'EDward Gaming', 'LGD Gaming','Anyones Legend','DRX', 'Liiv SANDBOX',
          'Rare Atom ','Top Esports', 'T1', 'Kwangdong Freecs', 'Ultra Prime', 'LNG Esports',
         'Nongshim RedForce','Hanwha Life Esports','Invictus Gaming','KT Rolster','DWG KIA',
@@ -154,7 +155,7 @@ teams1 = ['Oh My God','ThunderTalk Gaming','FunPlus Phoenix','Royal Never Give U
 
 
 
-teams2 =['Oh My God','ThunderTalk Gaming','FunPlus Phoenix','Royal Never Give Up',
+teams2 =['', 'Oh My God','ThunderTalk Gaming','FunPlus Phoenix','Royal Never Give Up',
          'JD Gaming', 'EDward Gaming', 'LGD Gaming','Anyones Legend','DRX', 'Liiv SANDBOX',
          'Rare Atom ','Top Esports', 'T1', 'Kwangdong Freecs', 'Ultra Prime', 'LNG Esports',
         'Nongshim RedForce','Hanwha Life Esports','Invictus Gaming','KT Rolster','DWG KIA',
@@ -172,8 +173,15 @@ st.title('Choose any of the following teams')
 team_1 = st.selectbox(label = 'Choose your team', options= teams1)
 team_2 = st.selectbox(label = 'Choose the opponent', options = teams2)
 
-if team_1 != '' and team_2 != '':
-    #st.image(gen_g, width=600, caption= 'Oh My God vs Gen.G')
-    fig2 = visualize2(team1 = team_1, team2 = team_2)
-    #fig, ax = plt.subplots(figsize=(12,12))
-    st.pyplot(fig2, figsize=(12,12))
+with st.container():
+    st.write('---')
+    graph_column, left_clumn = st.columns((2, 2))
+
+    with graph_column:
+        if team_1 != '' and team_2 != '':
+            fig2 = visualize2(team1 = team_1, team2 = team_2)
+            st.pyplot(fig2)
+
+    with left_column:
+        st.subheader('Chart representing both teams')
+        st.write('vspm = vision score per minute')
