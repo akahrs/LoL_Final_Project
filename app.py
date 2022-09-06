@@ -175,13 +175,23 @@ team_2 = st.selectbox(label = 'Choose the opponent', options = teams2)
 
 with st.container():
     st.write('---')
-    graph_column, left_clumn = st.columns((2, 2))
+    graph_column, new_column = st.columns((2, 2))
 
     with graph_column:
         if team_1 != '' and team_2 != '':
             fig2 = visualize2(team1 = team_1, team2 = team_2)
             st.pyplot(fig2)
 
-    with left_column:
-        st.subheader('Chart representing both teams')
-        st.write('vspm = vision score per minute')
+    with new_column:
+        if team_1 != '' and team_2 != '':
+            st.subheader('Chart representing both teams')
+            st.write('''
+
+                 - vspm = Vision score per minute
+                 - dpm = Damage per minute
+                 - team kpm = Team kill per minute
+                 - earned gpm = Earned gold per minute
+                 - gamelength = Duration of the game
+                 - structure_pm = Specific structure taken down per minute
+                 - teamdeaths_pm = Team player killed per minute
+                 ''' )
