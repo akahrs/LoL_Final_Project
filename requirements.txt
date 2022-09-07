@@ -13,6 +13,7 @@ streamlit
 streamlit_lottie
 requests
 Pillow
+matplotlib
 
 # tests/linter
 black
