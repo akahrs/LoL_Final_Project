@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
 
-
 def predict_teams(model, X, df):
 
     # Predict every team's cluster and merge to dataframe
@@ -32,6 +31,9 @@ def visualize_predictions(model, X, df, team1, team2):
 
     X_mean = pd.concat([pd.DataFrame(X_t.mean().drop('clusters'), columns=['mean']),
                    X_t.groupby('clusters').mean().T], axis=1)
+
+    X_to_show = X_t.drop(columns=("clusters"))
+    X_to_show = X_to_show.T
 
     sel_teams = df_reset[df_reset["index"].isin([team1, team2])]
     teams = [row["index"] for index, row in sel_teams.iterrows()]
@@ -76,7 +78,8 @@ def visualize_predictions(model, X, df, team1, team2):
     location = 0
 
     for k in model.predict(X_new_sel):
-        cluster_data = X_mean[k].values.tolist()
+        #cluster_data = X_mean[k].values.tolist()
+        cluster_data = X_to_show[index_pos[location]].values.tolist()
         radar.plot(cluster_data,  '-', lw=2, color=cluster_colors[k], alpha=0.7, label=f"{teams[location]}: Cluster {k}")
         location += 1
 
@@ -84,3 +87,23 @@ def visualize_predictions(model, X, df, team1, team2):
     radar.ax.set_title("Playstyle cluster(s) for selected teams", size=22, pad=60)
 
     return plt.show()
+
+def get_teams_diff(df, team1, team2):
+
+    # Get values and differences for two selected teams
+
+    df_new = df.copy()
+    df_new.reset_index(inplace=True)
+    df_new = df_new = df_new.rename({"index": "team"}, axis=1)
+
+    sel_teams = df_new[df_new["team"].isin([team1, team2])]
+    diff_btw_teams = sel_teams.drop(columns=["team"])
+    diff_btw_teams = diff_btw_teams.T
+
+    index_num1 = df_new.index[df_new["team"] == team1][0]
+    index_num2 = df_new.index[df_new["team"] == team2][0]
+    diff_btw_teams["Difference"] = diff_btw_teams[index_num1] - diff_btw_teams[index_num2]
+
+    diff_btw_teams = diff_btw_teams.rename({index_num1: team1, index_num2: team2}, axis=1)
+
+    return diff_btw_teams.round(decimals=2)
