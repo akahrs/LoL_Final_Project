@@ -180,7 +180,7 @@ with st.container():
                  - **dpm = Damage per minute**
                  - **team kpm = Team kill per minute**
                  - **earned gpm = Earned gold per minute**
-                 - **gamelength = Duration of the game**
+                 - **gamelength = Duration of the game (in seconds)**
                  - **structure_pm = Specific structure taken down per minute**
                  - **teamdeaths_pm = Team player killed per minute**
                  ''' )
