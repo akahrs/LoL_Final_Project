@@ -5,7 +5,7 @@ def get_local_data():
 
     # Get data from local disk
 
-    path = "LoL_Final_Project/data_cleaned/team_data_cleaned_2022.csv"
+    path = "../../data_cleaned/team_data_cleaned_2022.csv"
 
     df = pd.read_csv(path)
 
