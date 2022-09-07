@@ -109,6 +109,8 @@ with st.container():
 
 
 with st.container():
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+
     st.write('---')
     chart_column, exp_column = st.columns((2, 2))
     with chart_column:
@@ -218,6 +220,8 @@ team_1 = st.selectbox(label = 'Choose your team', options= teams1)
 team_2 = st.selectbox(label = 'Choose the opponent', options = teams2)
 
 with st.container():
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+
     st.write('---')
     graph_column, new_column = st.columns((2, 2))
 
