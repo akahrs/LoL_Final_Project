@@ -12,7 +12,7 @@ scikit-learn
 streamlit
 streamlit_lottie
 requests
-PIL
+Pillow
 
 # tests/linter
 black
