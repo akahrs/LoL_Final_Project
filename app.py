@@ -104,7 +104,8 @@ with st.container():
     )
 
     with right_column:
-        st.image('https://giffiles.alphacoders.com/527/52742.gif', width = 500)
+        #st.image('https://giffiles.alphacoders.com/527/52742.gif', width = 500)
+        st.image('https://giffiles.alphacoders.com/527/52704.gif', width = 500)
 
 
 with st.container():
@@ -116,13 +117,49 @@ with st.container():
         st.pyplot(fig)
 
     with exp_column:
-        st.subheader('**Chart representing all matches in 8 clusters**')
+        st.subheader('**Chart representing 8 playstyle cluster**')
         st.write(
                          '''
-                        - **Here you can see 7 different colors which represent each clusters**
-                        - **All LoL matches played during 2022 been clustered by our model based on their method of playing**
+                        - **Here you can see 8 different colors representing each cluster**
+                        - **All teams of major LoL leagues have been clustered by our model based on their last 10 games played (August 2022)**
                         - **Some teams try tend to go monsterkills more, some go for barons and canons and some go for structures**
-                        - **Keep in mind, we have also looked at sides because each side has different advantages**
+
+                        **In the following, each cluster is explained in some more detail:**
+
+                        **Cluster 0**:
+                        - Average across all other metrics
+                        - Aggressive in the beginning with highest first blood ratio across all clusters
+
+                        **Cluster 1**:
+                        - Slightly below average in all metrics
+                        - Tend to play especially longer games
+
+                        **Cluster 2**:
+                        - Strong across all metrics
+                        - Especially high CS numbers and low teamdeaths)
+                        - Tend to play longer games on average
+
+                        **Cluster 3**:
+                        - Below average across metrics
+                        - Frequent teamdeaths with decent CS numbers
+
+                        **Cluster 4**:
+                        - Above average across metrics;
+                        - Very aggressive playstyle with frequent skirmishes (high kills per min but also frequent deaths)
+                        - Quite low vision score
+
+                        **Cluster 5**:
+                        - Weakest across all metrics
+                        - Highest deaths across all clusters
+
+                        **Cluster 6**:
+                        - Strong/above average in most metrics
+                        - Longest game duration on average
+                        - Slightly weaker CS with high vision score, however
+
+                        **Cluster 7**:
+                        - Strongest across all metrics with highest win rate
+                        - High control of the game with quick game closure (i.e. short games)
 
                         '''
         )
