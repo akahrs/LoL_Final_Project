@@ -13,13 +13,15 @@ from LoL_Final_Project.logic.model import fit_model, visualize_model
 from LoL_Final_Project.logic.predict import predict_teams, visualize_predictions
 from LoL_Final_Project.main.main import get_data, preprocess_run, visualize, visualize2, get_team_values
 
+
+
 df = get_data()
 result = preprocess_run(df)
 X = result[0]
 model = result[1]
 
 st.set_page_config(page_title='Our Data Science Project', page_icon='🍁', layout='wide')
-
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 def load_lottieurl(url):
