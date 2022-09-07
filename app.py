@@ -1,7 +1,6 @@
 # from optparse import Option
 # from ssl import Options
-import matplotlib.pyplot as plt
-from turtle import width
+#removed the lib
 import streamlit as st
 import requests
 from streamlit_lottie import st_lottie
