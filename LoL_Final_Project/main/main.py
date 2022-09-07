@@ -3,7 +3,7 @@ from LoL_Final_Project.data.retrieve_data import get_local_data
 from LoL_Final_Project.data.prepare_data import filter_major_leagues, aggregate_team_data, create_agg_dataframe
 from LoL_Final_Project.logic.preprocess import preprocess
 from LoL_Final_Project.logic.model import fit_model, visualize_model
-from LoL_Final_Project.logic.predict import predict_teams, visualize_predictions
+from LoL_Final_Project.logic.predict import predict_teams, visualize_predictions, get_teams_diff
 import streamlit as st
 
 def get_data():
@@ -47,3 +47,7 @@ def visualize2(model, X, df, team1, team2):
     # df = get_data()
 
     return visualize_predictions(model, X, df, team1=team1, team2=team2)
+
+def get_team_values(model, team1, team2):
+
+    return get_teams_diff(model, team1, team2)

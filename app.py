@@ -12,7 +12,7 @@ from LoL_Final_Project.data.prepare_data import filter_major_leagues, aggregate_
 from LoL_Final_Project.logic.preprocess import preprocess
 from LoL_Final_Project.logic.model import fit_model, visualize_model
 from LoL_Final_Project.logic.predict import predict_teams, visualize_predictions
-from LoL_Final_Project.main.main import get_data, preprocess_run, visualize, visualize2
+from LoL_Final_Project.main.main import get_data, preprocess_run, visualize, visualize2, get_team_values
 
 df = get_data()
 result = preprocess_run(df)
@@ -150,7 +150,7 @@ with st.container():
 
 
 teams1 = ['','Oh My God','ThunderTalk Gaming','FunPlus Phoenix','Royal Never Give Up',
-         'JD Gaming', 'EDward Gaming', 'LGD Gaming','Anyones Legend','DRX', 'Liiv SANDBOX',
+         'JD Gaming', 'EDward Gaming', 'LGD Gaming',"Anyone's Legend",'DRX', 'Liiv SANDBOX',
          'Rare Atom ','Top Esports', 'T1', 'Kwangdong Freecs', 'Ultra Prime', 'LNG Esports',
         'Nongshim RedForce','Hanwha Life Esports','Invictus Gaming','KT Rolster','DWG KIA',
         'Team WE','Weibo Gaming','Gen.G','Fredit BRION','MAD Lions','Team Vitality','Rogue',
@@ -163,7 +163,7 @@ teams1 = ['','Oh My God','ThunderTalk Gaming','FunPlus Phoenix','Royal Never Giv
 
 
 teams2 =['', 'Oh My God','ThunderTalk Gaming','FunPlus Phoenix','Royal Never Give Up',
-         'JD Gaming', 'EDward Gaming', 'LGD Gaming','Anyones Legend','DRX', 'Liiv SANDBOX',
+         'JD Gaming', 'EDward Gaming', 'LGD Gaming',"Anyone's Legend",'DRX', 'Liiv SANDBOX',
          'Rare Atom ','Top Esports', 'T1', 'Kwangdong Freecs', 'Ultra Prime', 'LNG Esports',
         'Nongshim RedForce','Hanwha Life Esports','Invictus Gaming','KT Rolster','DWG KIA',
         'Team WE','Weibo Gaming','Gen.G','Fredit BRION','MAD Lions','Team Vitality','Rogue',
@@ -191,19 +191,22 @@ with st.container():
 
     with new_column:
         if team_1 != '' and team_2 != '':
-            st.subheader('Chart representing both teams')
-            st.write('''
+            st.subheader('Table with values and differences for both teams')
+            #st.write('''
 
-                    - **High first blood**: Aggressive in the beginning; average across all other metrics
-                    - **High Game length**: Playing it slow and steady, Usually strong and above average in most of the mertics
+                    #- **High first blood**: Aggressive in the beginning; average across all other metrics
+                    #- **High Game length**: Playing it slow and steady, Usually strong and above average in most of the mertics
 
-                    - **High vision score per minute(vspm)**:
-                    - **High damage per minute(dpm)**:
-                    - **More gold earned per minute(gpm)**:
-                    - **Low team death per minute**:
-                    - **More monsters killed per minute**:
-                    - **More structure taken per minute**:
-                    - **Big monster taken per minute**:
-                    - **Team kills per minute(team kpm)**:
-                    - **High result rate**:
-                 ''' )
+                    #- **High vision score per minute(vspm)**:
+                    #- **High damage per minute(dpm)**:
+                    #- **More gold earned per minute(gpm)**:
+                    #- **Low team death per minute**:
+                    #- **More monsters killed per minute**:
+                    #- **More structure taken per minute**:
+                    #- **Big monster taken per minute**:
+                    #- **Team kills per minute(team kpm)**:
+                    #- **High result rate**:
+                 #''' )
+
+            table = get_team_values(df, team1 = team_1, team2 = team_2)
+            st.table(table)
