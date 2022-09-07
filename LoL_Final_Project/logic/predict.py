@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import streamlit as st
+
 
 def predict_teams(model, X, df):
 
@@ -16,6 +18,7 @@ def predict_teams(model, X, df):
     df_class = df_class.rename(columns={0: "cluster"})
 
     return df_class
+
 
 def visualize_predictions(model, X, df, team1, team2):
 

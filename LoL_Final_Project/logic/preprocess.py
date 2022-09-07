@@ -3,6 +3,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.compose import make_column_transformer
 from sklearn.compose import make_column_selector
 from sklearn.pipeline import make_pipeline
+import streamlit as st
+
 
 def preprocess(df):
 
