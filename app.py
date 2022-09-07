@@ -150,7 +150,7 @@ with st.container():
 
 
 teams1 = ['','Oh My God','ThunderTalk Gaming','FunPlus Phoenix','Royal Never Give Up',
-         'JD Gaming', 'EDward Gaming', 'LGD Gaming','Anyones Legend','DRX', 'Liiv SANDBOX',
+         'JD Gaming', 'EDward Gaming', 'LGD Gaming',"Anyone's Legend",'DRX', 'Liiv SANDBOX',
          'Rare Atom ','Top Esports', 'T1', 'Kwangdong Freecs', 'Ultra Prime', 'LNG Esports',
         'Nongshim RedForce','Hanwha Life Esports','Invictus Gaming','KT Rolster','DWG KIA',
         'Team WE','Weibo Gaming','Gen.G','Fredit BRION','MAD Lions','Team Vitality','Rogue',
@@ -163,7 +163,7 @@ teams1 = ['','Oh My God','ThunderTalk Gaming','FunPlus Phoenix','Royal Never Giv
 
 
 teams2 =['', 'Oh My God','ThunderTalk Gaming','FunPlus Phoenix','Royal Never Give Up',
-         'JD Gaming', 'EDward Gaming', 'LGD Gaming','Anyones Legend','DRX', 'Liiv SANDBOX',
+         'JD Gaming', 'EDward Gaming', 'LGD Gaming',"Anyone's Legend",'DRX', 'Liiv SANDBOX',
          'Rare Atom ','Top Esports', 'T1', 'Kwangdong Freecs', 'Ultra Prime', 'LNG Esports',
         'Nongshim RedForce','Hanwha Life Esports','Invictus Gaming','KT Rolster','DWG KIA',
         'Team WE','Weibo Gaming','Gen.G','Fredit BRION','MAD Lions','Team Vitality','Rogue',
@@ -188,6 +188,7 @@ with st.container():
         if team_1 != '' and team_2 != '':
             fig2 = visualize2(model, X, df, team1 = team_1, team2 = team_2)
             st.pyplot(fig2)
+
 
     with new_column:
         if team_1 != '' and team_2 != '':
