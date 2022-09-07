@@ -12,7 +12,8 @@ scikit-learn
 streamlit
 streamlit_lottie
 requests
-PIL
+pillow
+matplotlib
 
 # tests/linter
 black
