@@ -1,7 +1,11 @@
 # from optparse import Option
 # from ssl import Options
+<<<<<<< HEAD
 #import matplotlib.pyplot as plt
 #from turtle import width
+=======
+#removed the lib
+>>>>>>> a15e3f04475eafe892dadd29c76565d7c77756f4
 import streamlit as st
 import requests
 from streamlit_lottie import st_lottie
@@ -14,13 +18,15 @@ from LoL_Final_Project.logic.model import fit_model, visualize_model
 from LoL_Final_Project.logic.predict import predict_teams, visualize_predictions
 from LoL_Final_Project.main.main import get_data, preprocess_run, visualize, visualize2, get_team_values
 
+
+
 df = get_data()
 result = preprocess_run(df)
 X = result[0]
 model = result[1]
 
 st.set_page_config(page_title='Our Data Science Project', page_icon='🍁', layout='wide')
-
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 def load_lottieurl(url):
@@ -181,7 +187,7 @@ with st.container():
                  - **dpm = Damage per minute**
                  - **team kpm = Team kill per minute**
                  - **earned gpm = Earned gold per minute**
-                 - **gamelength = Duration of the game**
+                 - **gamelength = Duration of the game (in seconds)**
                  - **structure_pm = Specific structure taken down per minute**
                  - **teamdeaths_pm = Team player killed per minute**
                  ''' )
@@ -229,6 +235,7 @@ with st.container():
         if team_1 != '' and team_2 != '':
             fig2 = visualize2(model, X, df, team1 = team_1, team2 = team_2)
             st.pyplot(fig2)
+
 
     with new_column:
         if team_1 != '' and team_2 != '':

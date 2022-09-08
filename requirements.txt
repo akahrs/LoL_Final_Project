@@ -12,7 +12,11 @@ scikit-learn
 streamlit
 streamlit_lottie
 requests
+<<<<<<< HEAD
 pillow
+=======
+Pillow
+>>>>>>> a15e3f04475eafe892dadd29c76565d7c77756f4
 matplotlib
 
 # tests/linter
