@@ -1,11 +1,7 @@
 # from optparse import Option
 # from ssl import Options
-<<<<<<< HEAD
 #import matplotlib.pyplot as plt
 #from turtle import width
-=======
-#removed the lib
->>>>>>> a15e3f04475eafe892dadd29c76565d7c77756f4
 import streamlit as st
 import requests
 from streamlit_lottie import st_lottie
@@ -85,9 +81,9 @@ st.write(f'<style>{CSS}</style>', unsafe_allow_html=True)
 
 #  Header section
 with st.container():
-    st.subheader('**Hi Everyone! We are Data Science #955 legends**')
-    st.title('**Project League of Legends**')
-    st.write('**Our trained model will help you plan your strategy to win against the oponent based on their last matches tactics and gameplans**')
+    st.subheader('**Hi Everyone! We are Data Science batch #955 legends**')
+    st.title('**Project: League of Legends Intelligence**')
+    st.write("**Our trained model will help you as a coach to plan your strategy for winning against your oponent's team by analyzing your team's and the opponent team's most recent playstyle (based on the last 10 games played)**")
 
 
 #   What do I do
@@ -100,11 +96,10 @@ with st.container():
         st.write('##')
         st.write(
         '''
-        - **We have collected data of all the matches that's been played in 2022**
-        - **We have then created a model which group each team in different cluster based on their game style and match planning**
-        - **The idea of our model is to help individuals find out their opponents or favorite teams game tactics**
-        - **This can also help E-sports team coaches to prepare their teams accordingly by looking at their opponents weakness and strong points**
-        - **lets find more in details**
+        - **The data used to identify the 8 clusters is based on matches played in the major leagues (LEC, LCS, LCK, LPL, PCS) in 2022**
+        - **The trained model groups each team into one of those 8 clusters based on their playstyle in the 10 most recent games played**
+        - **The purpose of the model is to help coaches find out their team's and their opponent team's playstyle**
+        - **Overall, it aims to help LoL E-sports teams to better prepare their teams accordingly for upcoming matches by looking at their opponents' weaknesses and strong points**
 
         '''
     )
@@ -128,9 +123,9 @@ with st.container():
         st.subheader('**Chart representing 8 playstyle cluster**')
         st.write(
                          '''
-                        - **Here you can see 8 different colors representing each cluster**
+                        - **The 8 colors represent the different clusters**
                         - **All teams of major LoL leagues have been clustered by our model based on their last 10 games played (August 2022)**
-                        - **Some teams try tend to go monsterkills more, some go for barons and canons and some go for structures**
+                        - **You can select two teams to see their most recent playstyle cluster and to compare their performances based on the metrics below**
 
                         **In the following, each cluster is explained in some more detail:**
 
@@ -182,14 +177,7 @@ with st.container():
     with exp_column:
         st.subheader('key words in chart')
         st.write('''
-
-                 - **vspm = Vision score per minute**
-                 - **dpm = Damage per minute**
-                 - **team kpm = Team kill per minute**
-                 - **earned gpm = Earned gold per minute**
-                 - **gamelength = Duration of the game (in seconds)**
-                 - **structure_pm = Specific structure taken down per minute**
-                 - **teamdeaths_pm = Team player killed per minute**
+                 **result = Winrate of last games**; **vspm = Vision score per minute**; **dpm = Damage per minute**; **team kpm = Team kills per minute**; **earned gpm = Earned gold per minute**; **gamelength = Duration of the game (in seconds)**; **structures_pm = Structures (towers, inhibitors) taken down per minute**; **teamdeaths_pm = Team deaths per minute**
                  ''' )
 
 
@@ -223,7 +211,7 @@ st.title('Choose any of the following teams')
 
 
 team_1 = st.selectbox(label = 'Choose your team', options= teams1)
-team_2 = st.selectbox(label = 'Choose the opponent', options = teams2)
+team_2 = st.selectbox(label = "Choose opponent's team", options = teams2)
 
 with st.container():
     st.set_option('deprecation.showPyplotGlobalUse', False)

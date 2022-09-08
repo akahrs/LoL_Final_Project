@@ -14,7 +14,15 @@
 footer {visibility: hidden;}
 header {visibility: hidden;}
 
-h1 {
+h1 strong {
   color: red;
 
+}
+
+h2 {
+  color: white;
+}
+
+strong {
+  color: white;
 }
